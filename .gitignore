@@ -1,0 +1,17 @@
+# C++
+build/
+*.o
+*.so
+*.dll
+*.exe
+*.dylib
+
+# Python
+__pycache__/
+*.pyc 
+.venv/
+
+# IDE/Editor
+.vscode/
+.idea/
+.xcodeproj/
