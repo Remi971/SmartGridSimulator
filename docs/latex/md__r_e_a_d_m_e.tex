@@ -1,0 +1,53 @@
+\chapter{Smart Grid Simulator }
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{Smart Grid Simulator@{Smart Grid Simulator}}
+\label{md__r_e_a_d_m_e_autotoc_md1}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md1}%
+
+
+A smart electric grid simulator developed in C++ with a Py\+Qt GUI.\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{\texorpdfstring{Functionalities}{Functionalities}}\label{md__r_e_a_d_m_e_autotoc_md2}
+
+\begin{DoxyItemize}
+\item Energy Producers/\+Consumers Simulation
+\item Dynamique managements of the batteries
+\item GUI in Py\+Qt
+\item Modularity and extensibility (A vérifier)
+\end{DoxyItemize}
+
+{\itshape TODO\+:} Mettre une image\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysection{\texorpdfstring{Getting Started}{Getting Started}}\label{md__r_e_a_d_m_e_autotoc_md3}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysubsection{\texorpdfstring{Prerequistes}{Prerequistes}}\label{md__r_e_a_d_m_e_autotoc_md4}
+
+\begin{DoxyItemize}
+\item C++17 or higher
+\item CMake ≥ 3.\+10
+\item Python 3.\+8+ (for the Py\+Qt GUI)
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{md__r_e_a_d_m_e_autotoc_md5}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysubsubsection{\texorpdfstring{1. Clone the repo}{1. Clone the repo}}\label{md__r_e_a_d_m_e_autotoc_md6}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ https://github.com/Remi971/SmartGridSimulator.git}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysubsubsection{\texorpdfstring{2. Compilation (C++)}{2. Compilation (C++)}}\label{md__r_e_a_d_m_e_autotoc_md7}
+Into the project folder follow those instructions \+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build\ \&\&\ cd\ build}
+\DoxyCodeLine{cmake\ ..}
+\DoxyCodeLine{make}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysubsubsection{\texorpdfstring{3. Launch the GUI (Python)}{3. Launch the GUI (Python)}}\label{md__r_e_a_d_m_e_autotoc_md8}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd\ python}
+\DoxyCodeLine{pip\ -\/m\ venv\ .venv}
+\DoxyCodeLine{pip\ -\/m\ install\ -\/r\ requirements.txt}
+\DoxyCodeLine{python\ python/app.py}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md__r_e_a_d_m_e_autotoc_md9}
+Use case of the application.\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysection{\texorpdfstring{Authors}{Authors}}\label{md__r_e_a_d_m_e_autotoc_md10}
+{\bfseries{Rémi Bhagalou}} -\/ {\itshape Initial work} -\/ \href{https://github.com/Remi971}{\texttt{Github}}\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysection{\texorpdfstring{License}{License}}\label{md__r_e_a_d_m_e_autotoc_md11}
+This project is licensed under the MIT License -\/ see the \doxysectlink{md__l_i_c_e_n_s_e}{LICENSE}{0} file for details\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysection{\texorpdfstring{Acknowledgments}{Acknowledgments}}\label{md__r_e_a_d_m_e_autotoc_md12}
+Ideal for educational purposes, energy system prototyping, or smart grid research. 

@@ -11,13 +11,25 @@ A smart electric grid simulator developed in C++ with a PyQt GUI.
 
 *TODO:* Mettre une image
 
-## Pre-request (A vérifier)
+## Getting Started
+
+### Prerequistes
 
 - C++17 or higher
 - CMake ≥ 3.10
 - Python 3.8+ (for the PyQt GUI)
 
-### Compilation (C++)
+### Installation
+
+#### 1. Clone the repo
+
+```bash
+git clone https://github.com/Remi971/SmartGridSimulator.git
+```
+
+#### 2. Compilation (C++)
+
+Into the project folder follow those instructions :
 
 ```bash
 mkdir build && cd build
@@ -25,7 +37,7 @@ cmake ..
 make
 ```
 
-### Launch the GUI (Python)
+#### 3. Launch the GUI (Python)
 
 ```bash
 cd python
@@ -33,3 +45,19 @@ pip -m venv .venv
 pip -m install -r requirements.txt
 python python/app.py
 ```
+
+## Example
+
+Use case of the application.
+
+## Authors
+
+**Rémi Bhagalou** - *Initial work* - [Github](https://github.com/Remi971)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details
+
+## Acknowledgments
+
+Ideal for educational purposes, energy system prototyping, or smart grid research.

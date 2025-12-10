@@ -1,0 +1,214 @@
+\doxysection{smart\+\_\+grid.\+h}
+\hypertarget{smart__grid_8h_source}{}\label{smart__grid_8h_source}\index{include/smart\_grid.h@{include/smart\_grid.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}json.hpp"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{using\ }json\ =\ nlohmann::json;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }EnergyProducer\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ id;}
+\DoxyCodeLine{00016\ \ \ \ \ std::string\ type;\ \ \textcolor{comment}{//\ "{}solar"{},\ "{}wind"{},\ "{}grid"{}}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{double}\ capacity;\ \ \ \textcolor{comment}{//\ Capacité\ maximale\ (kW)}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{double}\ current\_output;\ \ \textcolor{comment}{//\ Production\ actuelle\ (kW)}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ EnergyProducer(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ std::string\ type,\ \textcolor{keywordtype}{double}\ capacity)}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ :id(\textcolor{keywordtype}{id}),\ type(type),\ capacity(capacity),\ current\_output(0.0)\ \{\}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ update\_output(\textcolor{keywordtype}{double}\ current\_time)\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}solar"{}})\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ solar\_factor\ =\ std::max(0.0,\ 1.0\ -\/\ std::abs((current\_time\ -\/\ 12.0)\ /\ 6.0));\ \textcolor{comment}{//\ Pic\ à\ midi}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ current\_output\ =\ capacity\ *\ solar\_factor\ *\ (0.8\ +\ 0.2\ *\ (((double)\ rand()\ /\ (RAND\_MAX))\ +\ 1));\ \textcolor{comment}{//\ Variation\ aléatoire\ légère}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}wind"{}})\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ wind\_factor\ =\ 0.3\ +\ 0.7\ *\ (((double)\ rand()\ /\ (RAND\_MAX))\ +\ 1);\ \textcolor{comment}{//\ Vent\ entre\ 30\%\ et\ 100\%\ de\ sa\ capacité}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ current\_output\ =\ capacity\ *\ wind\_factor;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \ \textcolor{comment}{//\ Grid\ (réseau\ principal)}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ current\_output\ =\ capacity;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ isEqual(\textcolor{keywordtype}{int}\ producerId)\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ producerId\ ==\ id;}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{class\ }EnergyConsumer\ \{}
+\DoxyCodeLine{00041\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ id;}
+\DoxyCodeLine{00043\ \ \ \ \ std::string\ type;\ \ \textcolor{comment}{//\ "{}household"{},\ "{}industry"{}}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{double}\ demand;\ \ \ \ \ \textcolor{comment}{//\ Demande\ actuelle\ (kW)}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ EnergyConsumer(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ std::string\ type,\ \textcolor{keywordtype}{double}\ base\_demand)}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ :id(\textcolor{keywordtype}{id}),\ type(type),\ demand(base\_demand)\ \{\}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ update\_demand(\textcolor{keywordtype}{double}\ current\_time)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Variation\ de\ la\ demande\ selon\ l'heure}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}household"{}})\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Pic\ le\ matin\ (7h\ -\/\ 9h)\ et\ le\ soir\ (18h\ -\/\ 22h)}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ demand\ =\ 2.0\ +\ 5.0\ *\ (}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::exp(-\/0.5\ *\ std::pow((current\_time\ -\/\ 8)\ /\ 2,\ 2))\ +\ \textcolor{comment}{//\ Pic\ le\ matin}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::exp(-\/0.5\ *\ std::pow((current\_time\ -\/\ 20)\ /\ 2,\ 2))\ \textcolor{comment}{//\ Pic\ le\ soir}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \ \textcolor{comment}{//\ Industry}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ demand\ =\ 50.0\ +\ 30.0\ *\ std::exp(-\/0.5\ *\ std::pow((current\_time\ -\/\ 12)\ /\ 6,\ 2));\ \ \textcolor{comment}{//\ Demande\ constante\ avec\ un\ léger\ pic\ en\ journée}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{bool}\ isEqual(\textcolor{keywordtype}{int}\ consumerId)\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{id}\ ==\ consumerId;}
+\DoxyCodeLine{00064\ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{class\ }Battery\ \{}
+\DoxyCodeLine{00068\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{double}\ capacity;\ \ \ \textcolor{comment}{//\ Capacité\ totale\ (kWh)}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{double}\ stored\_energy;\ \ \textcolor{comment}{//\ Énergie\ stockée\ (kWh)}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{double}\ max\_charge\_rate;\ \ \textcolor{comment}{//\ Puissance\ max\ de\ charge\ (kW)}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{double}\ max\_discharge\_rate;\ \ \textcolor{comment}{//\ Puissance\ max\ de\ décharge\ (kW)}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ Battery(\textcolor{keywordtype}{double}\ capacity,\ \textcolor{keywordtype}{double}\ charge\_rate)}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ :\ capacity(capacity),\ stored\_energy(capacity\ /\ 2),}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ max\_charge\_rate(charge\_rate),\ max\_discharge\_rate(charge\_rate)\ \{\}}
+\DoxyCodeLine{00077\ \ \ \ \ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ update(\textcolor{keywordtype}{double}\ newCapacity,\ \textcolor{keywordtype}{double}\ newCharge\_rate)\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ capacity\ =\ newCapacity;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ stored\_energy\ =\ newCapacity\ /\ 2;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ max\_charge\_rate\ =\ newCharge\_rate;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ max\_discharge\_rate\ =\ newCharge\_rate;}
+\DoxyCodeLine{00083\ \ \ \ \ \};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ charge(\textcolor{keywordtype}{double}\ energy,\ \textcolor{keywordtype}{double}\ delta\_time)\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ max\_energy\ =\ max\_charge\_rate\ *\ delta\_time\ /\ 3600;\ \ \textcolor{comment}{//\ kWh}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ energy\_to\_store\ =\ std::min(energy,\ max\_energy);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ stored\_energy\ =\ std::min(stored\_energy\ +\ energy\_to\_store,\ capacity);}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ reset()\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ stored\_energy\ =\ capacity\ /\ 2;}
+\DoxyCodeLine{00093\ \ \ \ \ \}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{double}\ discharge(\textcolor{keywordtype}{double}\ energy\_needed,\ \textcolor{keywordtype}{double}\ delta\_time)\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ max\_energy\ =\ max\_discharge\_rate\ *\ delta\_time\ /\ 3600;\ \ \textcolor{comment}{//\ kWh}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ energy\_to\_release\ =\ std::min(std::min(energy\_needed,\ max\_energy),\ stored\_energy);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ stored\_energy\ -\/=\ energy\_to\_release;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ energy\_to\_release;}
+\DoxyCodeLine{00100\ \ \ \ \ \}}
+\DoxyCodeLine{00101\ \};}
+\DoxyCodeLine{00107\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_smart_grid_a3888559a4e75f425843f4cc5a42556ff}{SmartGrid}}\ \{}
+\DoxyCodeLine{00108\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00109\ \ \ \ \ std::vector<EnergyProducer>\ producers;}
+\DoxyCodeLine{00110\ \ \ \ \ std::vector<EnergyConsumer>\ consumers;}
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{class_battery}{Battery}}\ battery;}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{double}\ time\_step;\ \ \textcolor{comment}{//\ Secondes}}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{double}\ current\_time;\ \ \textcolor{comment}{//\ Heures\ (0-\/24)}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00122\ \ \ \ \ \mbox{\hyperlink{class_smart_grid_a3888559a4e75f425843f4cc5a42556ff}{SmartGrid}}(\textcolor{keywordtype}{double}\ battery\_capacity,\ \textcolor{keywordtype}{double}\ charge\_rate,\ \textcolor{keywordtype}{double}\ time\_step=3600)}
+\DoxyCodeLine{00123\ \ \ \ \ :\ battery(battery\_capacity,\ charge\_rate),\ time\_step(time\_step),\ current\_time(0.0)\ \{\}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{void}\ add\_producer(\mbox{\hyperlink{class_energy_producer}{EnergyProducer}}\ producer)\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ producers.push\_back(producer);}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \ \ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{void}\ remove\_producer(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})\ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ producers.erase(producers.begin()\ +\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{keywordtype}{id}\ <<\ \textcolor{stringliteral}{"{}\ Removed\ !"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00132\ \ \ \ \ \}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{void}\ add\_consumer(EnergyConsumer\ consumer)\ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ consumers.push\_back(consumer);}
+\DoxyCodeLine{00136\ \ \ \ \ \}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordtype}{void}\ remove\_consumer(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})\ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ consumers.erase(consumers.begin()\ +\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{keywordtype}{id}\ <<\ \textcolor{stringliteral}{"{}\ Removed\ !"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00140\ \ \ \ \ \}}
+\DoxyCodeLine{00141\ \ \ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{void}\ updateBattery(\textcolor{keywordtype}{double}\ capacity,\ \textcolor{keywordtype}{double}\ charge\_rate)\ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ battery.update(capacity,\ charge\_rate);}
+\DoxyCodeLine{00144\ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \ \ \ \ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{void}\ reset()\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ producers.clear();}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ consumers.clear();}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ battery.reset();}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ current\_time\ =\ 0.0;}
+\DoxyCodeLine{00151\ \ \ \ \ \}}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{double}\ update()\ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ current\_time\ +=\ time\_step\ /\ 3600.0;}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (current\_time\ >=\ 24.0)\ current\_time\ -\/=\ 24.0;\ \ \textcolor{comment}{//\ Cycle\ de\ 24h}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Mettre\ à\ jour\ la\ production\ et\ la\ demande}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ time\_factor\ =\ 0.5\ *\ (1.0\ +\ sin(M\_PI\ *\ current\_time\ /\ 12.0));\ \ \textcolor{comment}{//\ Variation\ journalière}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ producer\ :\ producers)\ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ producer.update\_output(current\_time);}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ consumer\ :\ consumers)\ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ consumer.update\_demand(current\_time);}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculer\ l'équilibre\ offre/demande}}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ total\_production\ =\ 0.0;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ producer\ :\ producers)\ \{}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ total\_production\ +=\ producer.current\_output;}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ total\_demand\ =\ 0.0;}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ consumer\ :\ consumers)\ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ total\_demand\ +=\ consumer.demand;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ imbalance\ =\ total\_production\ -\/\ total\_demand;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ energy\ =\ 0.0;}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (imbalance\ >\ 0)\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Excédent\ :\ stocker\ dans\ la\ batterie}}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ battery.charge(imbalance\ *\ (time\_step\ /\ 3600.0),\ time\_step);}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ energy\ =\ imbalance;}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Déficit\ :\ utiliser\ la\ batterie}}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ energy\_needed\ =\ -\/imbalance\ *\ (time\_step\ /\ 3600.0);}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ energy\_from\_battery\ =\ battery.discharge(energy\_needed,\ time\_step);}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (energy\_from\_battery\ <\ energy\_needed)\ \{}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ energy\ =\ energy\_from\_battery\ <\ energy\_needed;}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Acheter\ de\ l'énergie\ au\ réseau\ principal}}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Achat\ d'énergie\ supplémentaire\ au\ réseau\ :\ "{}}}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ (energy\_needed\ -\/\ energy\_from\_battery)\ <<\ \textcolor{stringliteral}{"{}\ kWh"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ energy;}
+\DoxyCodeLine{00195\ \ \ \ \ \}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ json\ get\_state()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ json\ state;}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ state[\textcolor{stringliteral}{"{}time"{}}]\ =\ current\_time;}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ state[\textcolor{stringliteral}{"{}battery"{}}]\ =\ \{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}stored\_energy"{}},\ battery.stored\_energy\},}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}capacity"{}},\ battery.capacity\}}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ json\ producers\_state;}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ producer\ :\ producers)\ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ producers\_state[producer.type]\ =\ producer.current\_output;}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ state[\textcolor{stringliteral}{"{}producers"{}}]\ =\ producers\_state;}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ json\ consumers\_state;}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ consumer\ :\ consumers)\ \{}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ consumers\_state[consumer.type]\ =\ consumer.demand;}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ state[\textcolor{stringliteral}{"{}consumers"{}}]\ =\ consumers\_state;}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ state;}
+\DoxyCodeLine{00217\ \ \ \ \ \}}
+\DoxyCodeLine{00218\ \};}
+\DoxyCodeLine{00219\ }
+
+\end{DoxyCode}

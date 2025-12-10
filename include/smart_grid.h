@@ -99,7 +99,11 @@ public:
         return energy_to_release;
     }
 };
-
+/**
+ * @class SmartGrid
+ * @brief Smart Grid electric system simulator
+ * This class simulates a smart grid electric system with energy producers, consumers and a battery storage.
+ */
 class SmartGrid {
 private:
     std::vector<EnergyProducer> producers;
@@ -109,6 +113,12 @@ private:
     double current_time;  // Heures (0-24)
 
 public:
+/**
+ * @brief Constructor for SmartGrid
+ * @param battery_capacity Capacity or the battery in kWh
+ * @param charge_rate Maximum charge/discharge rate of the battery in kW
+ * @param time_step Time step for the simulation in seconds (default is 3600s)
+ */
     SmartGrid(double battery_capacity, double charge_rate, double time_step=3600)
     : battery(battery_capacity, charge_rate), time_step(time_step), current_time(0.0) {}
 

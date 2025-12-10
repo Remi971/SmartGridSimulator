@@ -1,12 +1,14 @@
-from PySide6.QtWidgets import (QWidget, QVBoxLayout, QTabWidget, QGroupBox, QLabel, QGridLayout, QSpinBox, QCheckBox, QPushButton                      )
-from PySide6.QtGui import (QCursor)
+from PySide6.QtWidgets import (QWidget, QHBoxLayout, QVBoxLayout, QFrame, QTabWidget, QGroupBox, QLabel, QGridLayout, QSpinBox, QCheckBox, QPushButton                      )
+from PySide6.QtGui import (QCursor, QPixmap)
 from PySide6.QtCore import Qt
+import os
 
 class SetupWidget(QWidget):
     def __init__(self, simulator):
         self.simulator = simulator
         self.layout = QVBoxLayout()
         super().__init__()
+        self.IMAGE_PATH = os.path.join(os.path.dirname(__file__), 'images', 'a_modifier.jpg')
         self.init_ui()
     
     def validate_edition(self):
@@ -41,29 +43,28 @@ class SetupWidget(QWidget):
         self.edit_button.toggled.connect(validate_button.setDisabled)
         self.edit_button.toggle()
         
-        layout = QGridLayout(result)
-        layout.addWidget(welcomeText, 0, 0, 1, 4)
-        layout.addWidget(battery_label, 1, 0)
-        layout.addWidget(self.capacity, 1, 1, 1, 1)
-        layout.addWidget(charge_label, 1, 2)
-        layout.addWidget(self.charge_box, 1, 3, 1, 1)
-        layout.addWidget(self.edit_button, 2, 1, 1, 1)
-        layout.addWidget(validate_button, 2, 2, 1, 1)
+        layout = QVBoxLayout(result)
+        layout.addWidget(welcomeText)
+        
+        # Add Batterry Image
+        image_label = QLabel(self)
+        pixmap = QPixmap(self.IMAGE_PATH)
+        image_label.setPixmap(pixmap)
+        image_label.resize(pixmap.width(), pixmap.height())
+        layout.addWidget(image_label)
+        
+        v_battery_frame = QFrame(self)
+        v_battery_layout = QHBoxLayout(v_battery_frame)
+        v_battery_layout.addWidget(battery_label)
+        v_battery_layout.addWidget(self.capacity)
+        v_battery_layout.addWidget(charge_label)
+        v_battery_layout.addWidget(self.charge_box)
+        layout.addWidget(v_battery_frame)
+        v_edition_frame = QFrame(self)
+        v_edition_layout = QHBoxLayout(v_edition_frame)
+        v_edition_layout.addWidget(self.edit_button)
+        v_edition_layout.addWidget(validate_button)
+        layout.addWidget(v_edition_frame)
         layout.setAlignment(Qt.AlignmentFlag.AlignVCenter)
         self.layout.addWidget(result)
         self.setLayout(layout)
-
-
-
-# class SetupUI:
-#     def __init__(self, simulator, tabs, label):
-#         self.simulator = simulator
-#         self.tabs = tabs
-#         self.label = label
-#         self.initiate()
-        
-#     def initiate(self):
-#         widget = SetupWidget(self.simulator)
-#         self.tabs.addTab(widget, self.label)
-      
-    
