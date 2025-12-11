@@ -19,7 +19,7 @@ class Widgets(QDialog):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Smart Grid Simulator")
-        self.setMinimumSize(800, 600)
+        self.setMinimumSize(800, 700)
         self.layout = QVBoxLayout(self)
         self.simulator = {
             "object": GridSimulator(battery_capacity=200.0, charge_rate=20.0), 
@@ -36,14 +36,19 @@ class Widgets(QDialog):
                 'consumers': {
                     'household': 'N/A', 
                     'industry': 'N/A'
-                    }
+                    },
+                'purchase_energy': 'N/A'
                 },
             "plot_linear_data": {
                 "time": [],
                 "battery": [],
                 "solar": [],
                 "wind": [],
-                "demand": []
+                "demand": [],
+                "industry": [],
+                "household": [],
+                "total_production": [],
+                "purchase": []
             },
             "timer": QTimer(),
             "table": {

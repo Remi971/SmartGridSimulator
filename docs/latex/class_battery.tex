@@ -1,23 +1,28 @@
 \doxysection{Battery Class Reference}
 \hypertarget{class_battery}{}\label{class_battery}\index{Battery@{Battery}}
+
+
+\doxylink{class_battery}{Battery} Storage in the Smart Grid This class represents a battery storage system for storing excess energy and supplying energy during deficits.  
+
+
+
+
+{\ttfamily \#include $<$smart\+\_\+grid.\+h$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_battery_adfb929b8c7e12bcf92f4038b538a51dc}\label{class_battery_adfb929b8c7e12bcf92f4038b538a51dc} 
-{\bfseries Battery} (double capacity, double charge\+\_\+rate)
-\item 
-\Hypertarget{class_battery_a51c3cde9b9e6aa1948a7a6b4548a9ec3}\label{class_battery_a51c3cde9b9e6aa1948a7a6b4548a9ec3} 
-void {\bfseries update} (double new\+Capacity, double new\+Charge\+\_\+rate)
-\item 
-\Hypertarget{class_battery_a1984c60f05cbbc190e3101ec62eeb51e}\label{class_battery_a1984c60f05cbbc190e3101ec62eeb51e} 
-void {\bfseries charge} (double energy, double delta\+\_\+time)
-\item 
+\mbox{\hyperlink{class_battery_adfb929b8c7e12bcf92f4038b538a51dc}{Battery}} (double capacity, double charge\+\_\+rate)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_battery}{Battery}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_battery_a51c3cde9b9e6aa1948a7a6b4548a9ec3}{update}} (double new\+Capacity, double new\+Charge\+\_\+rate)
+\begin{DoxyCompactList}\small\item\em Update battery parameters. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_battery_a1984c60f05cbbc190e3101ec62eeb51e}{charge}} (double energy, double delta\+\_\+time)
+\begin{DoxyCompactList}\small\item\em Charge the battery with excess energy. \end{DoxyCompactList}\item 
 \Hypertarget{class_battery_ac140703fc3c2213c81bb80fdbe57613a}\label{class_battery_ac140703fc3c2213c81bb80fdbe57613a} 
 void {\bfseries reset} ()
-\item 
-\Hypertarget{class_battery_a8f47cb436c6f4a04b61f964df1204859}\label{class_battery_a8f47cb436c6f4a04b61f964df1204859} 
-double {\bfseries discharge} (double energy\+\_\+needed, double delta\+\_\+time)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Reset the battery to initial state. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_battery_a8f47cb436c6f4a04b61f964df1204859}{discharge}} (double energy\+\_\+needed, double delta\+\_\+time)
+\begin{DoxyCompactList}\small\item\em Discharge the battery to supply energy. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -33,6 +38,90 @@ double {\bfseries max\+\_\+charge\+\_\+rate}
 \Hypertarget{class_battery_aab10abf2b485f02595bedc064bf0c591}\label{class_battery_aab10abf2b485f02595bedc064bf0c591} 
 double {\bfseries max\+\_\+discharge\+\_\+rate}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_battery}{Battery} Storage in the Smart Grid This class represents a battery storage system for storing excess energy and supplying energy during deficits. 
+
+\label{doc-constructors}
+\Hypertarget{class_battery_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_battery_adfb929b8c7e12bcf92f4038b538a51dc}\index{Battery@{Battery}!Battery@{Battery}}
+\index{Battery@{Battery}!Battery@{Battery}}
+\doxysubsubsection{\texorpdfstring{Battery()}{Battery()}}
+{\footnotesize\ttfamily \label{class_battery_adfb929b8c7e12bcf92f4038b538a51dc} 
+Battery\+::\+Battery (\begin{DoxyParamCaption}\item[{double}]{capacity}{, }\item[{double}]{charge\+\_\+rate}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor for \doxylink{class_battery}{Battery}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & Capacity or the battery in k\+Wh \\
+\hline
+{\em charge\+\_\+rate} & Maximum charge/discharge rate of the battery in kW \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_battery_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_battery_a1984c60f05cbbc190e3101ec62eeb51e}\index{Battery@{Battery}!charge@{charge}}
+\index{charge@{charge}!Battery@{Battery}}
+\doxysubsubsection{\texorpdfstring{charge()}{charge()}}
+{\footnotesize\ttfamily \label{class_battery_a1984c60f05cbbc190e3101ec62eeb51e} 
+void Battery\+::charge (\begin{DoxyParamCaption}\item[{double}]{energy}{, }\item[{double}]{delta\+\_\+time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Charge the battery with excess energy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em energy} & Amount of energy to charge (k\+Wh) \\
+\hline
+{\em delta\+\_\+time} & Time step for charging (seconds) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_battery_a8f47cb436c6f4a04b61f964df1204859}\index{Battery@{Battery}!discharge@{discharge}}
+\index{discharge@{discharge}!Battery@{Battery}}
+\doxysubsubsection{\texorpdfstring{discharge()}{discharge()}}
+{\footnotesize\ttfamily \label{class_battery_a8f47cb436c6f4a04b61f964df1204859} 
+double Battery\+::discharge (\begin{DoxyParamCaption}\item[{double}]{energy\+\_\+needed}{, }\item[{double}]{delta\+\_\+time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Discharge the battery to supply energy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em energy\+\_\+needed} & Amount of energy needed (k\+Wh) \\
+\hline
+{\em delta\+\_\+time} & Time step for discharging (seconds) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Amount of energy actually discharged (k\+Wh) 
+\end{DoxyReturn}
+\Hypertarget{class_battery_a51c3cde9b9e6aa1948a7a6b4548a9ec3}\index{Battery@{Battery}!update@{update}}
+\index{update@{update}!Battery@{Battery}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_battery_a51c3cde9b9e6aa1948a7a6b4548a9ec3} 
+void Battery\+::update (\begin{DoxyParamCaption}\item[{double}]{new\+Capacity}{, }\item[{double}]{new\+Charge\+\_\+rate}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update battery parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Capacity} & New capacity of the battery in k\+Wh \\
+\hline
+{\em new\+Charge\+\_\+rate} & New charge/discharge rate of the battery in kW \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

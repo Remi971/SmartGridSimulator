@@ -24,7 +24,9 @@ class ResultsWidget(QWidget):
         self.state = simulator['state']
         self.timer = simulator['timer']
         self.plot_linear_data = simulator['plot_linear_data']
-        self.plot_graph = pg.PlotWidget(title="Energy Balance Over Time")
+        self.plot_graph = pg.PlotWidget(title="Global Energy Production and Consuption over time")
+        self.plot_graph_global = pg.PlotWidget(title="Energy Balance over time")
+        self.plot_graph_purchase = pg.PlotWidget(title="Energy Purchase over time")
         self.table_producer = simulator['table']['producer']
         self.table_consumer = simulator['table']['consumer']
         self.donut_chart = QWidget()
@@ -38,7 +40,7 @@ class ResultsWidget(QWidget):
         #def fetch_and_update():
         if 'producers' in self.state:
             weather_factor = random.uniform(0.0, 1.0)
-            energy_update = self.simulator.update()
+            self.simulator.update()
             #TODO: If energy_update < 0, enregistrer le montant d'énergie manquante et le temps pour en faire un graphique
             self.state = self.simulator.get_state()
             
@@ -49,23 +51,46 @@ class ResultsWidget(QWidget):
             
             self.draw_donut_battery()
             self.plot_linear_data['time'].append(len(self.plot_linear_data['time']))
+            print("Energy update : ", self.state['purchase_energy'])
+            if self.plot_linear_data['purchase']:
+                self.plot_linear_data['purchase'].append(self.state['purchase_energy'])
+            else:
+                self.plot_linear_data['purchase'].append(0)
             self.plot_linear_data['battery'].append(self.state['battery']['stored_energy'])
+            total_production = 0
             if 'solar' not in self.state['producers']:
                 self.state['producers']['solar'] = 0
+            total_production += self.state['producers']['solar']
             self.plot_linear_data['solar'].append(self.state['producers']['solar'])
             if 'wind' not in self.state['producers']:
                 self.state['producers']['wind'] = 0
+            total_production += self.state['producers']['wind']
+            self.plot_linear_data['total_production'].append(total_production)
             self.plot_linear_data['wind'].append(self.state['producers']['wind'])
             total_demand = 0
             if 'industry' in self.state['consumers']:
                 total_demand += self.state['consumers']['industry']
+            else:
+                self.state['consumers']['industry'] = 0
+            self.plot_linear_data['industry'].append(self.state['consumers']['industry'])
             if 'household' in self.state['consumers']:
                 total_demand += self.state['consumers']['household']
+            else:
+                self.state['consumers']['household'] = 0
+            self.plot_linear_data['household'].append(self.state['consumers']['household'])
             self.plot_linear_data['demand'].append(total_demand)
+            self.industry_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['industry'])
+            self.household_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['household'])
             self.solar_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['solar'])
             self.wind_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['wind'])
-            self.demand_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['demand'])
+            #self.demand_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['demand'])
             self.battery_level_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['battery'])
+
+            self.production_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['total_production'])
+            self.consuption_curve.setData(self.plot_linear_data["time"], self.plot_linear_data['demand'])
+            self.battery_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['battery'])        
+        
+            self.purchase_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['purchase'])
         #return fetch_and_update
         
     def stop_reset(self):
@@ -79,7 +104,11 @@ class ResultsWidget(QWidget):
             self.plot_linear_data['battery'].clear()
             self.plot_linear_data['solar'].clear()
             self.plot_linear_data['wind'].clear()
+            self.plot_linear_data['industry'].clear()
+            self.plot_linear_data['household'].clear()
+            self.plot_linear_data['total_production'].clear()
             self.plot_linear_data['demand'].clear()
+            self.plot_linear_data['purchase'].clear()
             self.state = {
                 'battery': {
                     'capacity': 'N/A', 
@@ -93,7 +122,8 @@ class ResultsWidget(QWidget):
                 'consumers': {
                     'household': 'N/A', 
                     'industry': 'N/A'
-                    }
+                    },
+                'purchase_energy': 'N/A'
                 }
             self.table_producer.clear()
             self.table_producer.setRowCount(0)
@@ -101,8 +131,16 @@ class ResultsWidget(QWidget):
             self.table_consumer.setRowCount(0)
             self.solar_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['solar'])
             self.wind_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['wind'])
-            self.demand_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['demand'])
+            self.industry_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['industry'])
+            self.household_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['household'])
+            #self.demand_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['demand'])
             self.battery_level_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['battery'])
+            
+            self.production_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['total_production'])
+            self.consuption_curve.setData(self.plot_linear_data["time"], self.plot_linear_data['demand'])
+            self.battery_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['battery'])
+            
+            self.purchase_curve.setData(self.plot_linear_data['time'], self.plot_linear_data['purchase'])
             self.draw_donut_battery()
             self.stop_button.setText(StopButtonLabel.STOP_SIMULATION.value)
     
@@ -123,6 +161,7 @@ class ResultsWidget(QWidget):
         img = plt.imread(BATTERY_IMAGE_PATH)
         self.ax.imshow(img, extent=(-0.3, 0.3, -0.3, 0.3), aspect='auto', zorder=10)
         self.ax.set_aspect('equal')
+        
         self.canvas.draw()
         
     def init_ui(self):
@@ -133,11 +172,27 @@ class ResultsWidget(QWidget):
         self.plot_graph.setLabel('left', 'Power (kW)')
         self.plot_graph.setLabel('bottom', 'Time (h)')
         self.plot_graph.addLegend()
+        
+        self.plot_graph_global.setLabel('left', 'Power (kWh)')
+        self.plot_graph_global.setLabel('bottom', 'Time (h)')
+        self.plot_graph_global.addLegend()
+        
+        self.plot_graph_purchase.setLabel('left', 'Energy Purchased (kWh)')
+        self.plot_graph_purchase.setLabel('bottom', 'Time (h)')
+        self.plot_graph_purchase.addLegend()
+        
         self.solar_curve = self.plot_graph.plot(pen='y', name='Solar Output')
         self.wind_curve = self.plot_graph.plot(pen='b', name='Wind Output')
-        self.demand_curve = self.plot_graph.plot(pen='r', name='Total Demand')
+        self.industry_curve = self.plot_graph.plot(pen='r', name="Industry Demand")
+        self.household_curve = self.plot_graph.plot(pen='m', name="Household Demand")
+        #self.demand_curve = self.plot_graph.plot(pen='r', name='Total Demand')
         self.battery_level_curve = self.plot_graph.plot(pen='g', name='Battery Level')
-        # self.simulator['plot_linear_data'] = {'time': [], 'battery': [], 'solar': [], 'wind': [], 'demand': []}
+        
+        self.production_curve = self.plot_graph_global.plot(pen='y', name="Total Production")
+        self.consuption_curve = self.plot_graph_global.plot(pen='r', name="Total Consuption")
+        self.battery_curve = self.plot_graph_global.plot(pen='g', name="Battery Level")
+        
+        self.purchase_curve = self.plot_graph_purchase.plot(pen='r', name="Energy Purchased from Grid")
         
         #Button to stop simulation
         self.stop_button = QPushButton(StopButtonLabel.STOP_SIMULATION.value, self)
@@ -154,9 +209,11 @@ class ResultsWidget(QWidget):
         layout = QVBoxLayout(result)
         h_frame = QFrame(self)
         h_layout = QHBoxLayout(h_frame)
-        h_layout.addWidget(self.plot_graph)
+        h_layout.addWidget(self.plot_graph_global)
         h_layout.addWidget(self.canvas)
+        h_layout.addWidget(self.plot_graph_purchase)
         layout.addWidget(infoText)
+        layout.addWidget(self.plot_graph)
         layout.addWidget(h_frame)
         layout.addWidget(self.stop_button)
         

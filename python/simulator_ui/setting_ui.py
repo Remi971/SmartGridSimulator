@@ -18,7 +18,7 @@ class SettingWidget(QWidget):
          
     def init_ui(self):
         result = QGroupBox("Settings")
-        infoText = QLabel("<h2>Configurez vos producteurs et consommateurs ici.<h2>")
+        infoText = QLabel("<h2>Producers and consumers settings<h2>")
         infoText.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         
         # Producer Section
@@ -105,7 +105,7 @@ class SettingWidget(QWidget):
         self.producer_table.setItem(row, 1, QTableWidgetItem(str(capacity)))
         self.simulator.add_producer(row, producer_type, capacity)
         self.delete_producer_button = QPushButton("Delete")
-        self.delete_producer_button.clicked.connect(self.delete_producer_row)
+        self.delete_producer_button.clicked.connect(lambda: self.delete_producer_row())
         self.delete_producer_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.delete_producer_button.setProperty("class", "small_button")
         #delete_button.setDisabled(True)
@@ -119,7 +119,7 @@ class SettingWidget(QWidget):
         self.consumer_table.setItem(row, 1, QTableWidgetItem(str(capacity)))
         self.simulator.add_consumer(row, consumer_type, capacity)
         self.delete_consumer_button = QPushButton("Delete")
-        self.delete_consumer_button.clicked.connect(self.delete_consumer_row)
+        self.delete_consumer_button.clicked.connect(lambda: self.delete_consumer_row())
         self.delete_consumer_button.setCursor(QCursor(Qt.PointingHandCursor))
         self.delete_consumer_button.setProperty("class", "small_button")
         #delete_consumer_button.setDisabled(True)

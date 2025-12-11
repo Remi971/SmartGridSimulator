@@ -91,15 +91,20 @@ $(function(){initNavTree('class_energy_consumer.html','','class_energy_consumer-
   <div class="headertitle"><div class="title">EnergyConsumer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Energy Consumer in the Smart Grid This class represents an energy consumer such as households or industries.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="smart__grid_8h_source.html">smart_grid.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa47328f6fc869ce76333e29d8ebbeed1" id="r_aa47328f6fc869ce76333e29d8ebbeed1"><td class="memItemLeft" align="right" valign="top"><a id="aa47328f6fc869ce76333e29d8ebbeed1" name="aa47328f6fc869ce76333e29d8ebbeed1"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>EnergyConsumer</b> (int id, std::string type, double base_demand)</td></tr>
-<tr class="memitem:a4fae44f715451dc1bebbfc8cb0fd6e26" id="r_a4fae44f715451dc1bebbfc8cb0fd6e26"><td class="memItemLeft" align="right" valign="top"><a id="a4fae44f715451dc1bebbfc8cb0fd6e26" name="a4fae44f715451dc1bebbfc8cb0fd6e26"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update_demand</b> (double current_time)</td></tr>
-<tr class="memitem:a44d5c502dcf776eef2885d0d5dc168d4" id="r_a44d5c502dcf776eef2885d0d5dc168d4"><td class="memItemLeft" align="right" valign="top"><a id="a44d5c502dcf776eef2885d0d5dc168d4" name="a44d5c502dcf776eef2885d0d5dc168d4"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isEqual</b> (int consumerId)</td></tr>
+<tr class="memitem:aa47328f6fc869ce76333e29d8ebbeed1" id="r_aa47328f6fc869ce76333e29d8ebbeed1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa47328f6fc869ce76333e29d8ebbeed1">EnergyConsumer</a> (int id, std::string type, double base_demand)</td></tr>
+<tr class="memdesc:aa47328f6fc869ce76333e29d8ebbeed1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="class_energy_consumer.html" title="Energy Consumer in the Smart Grid This class represents an energy consumer such as households or indu...">EnergyConsumer</a>.  <br /></td></tr>
+<tr class="memitem:a4fae44f715451dc1bebbfc8cb0fd6e26" id="r_a4fae44f715451dc1bebbfc8cb0fd6e26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fae44f715451dc1bebbfc8cb0fd6e26">update_demand</a> (double current_time)</td></tr>
+<tr class="memdesc:a4fae44f715451dc1bebbfc8cb0fd6e26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update demand based on time of day.  <br /></td></tr>
+<tr class="memitem:a44d5c502dcf776eef2885d0d5dc168d4" id="r_a44d5c502dcf776eef2885d0d5dc168d4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44d5c502dcf776eef2885d0d5dc168d4">isEqual</a> (int consumerId)</td></tr>
+<tr class="memdesc:a44d5c502dcf776eef2885d0d5dc168d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the consumer ID matches.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -110,6 +115,121 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td><
 <tr class="memitem:ab0fc60f7f0d3423bcc4f50747a2ca362" id="r_ab0fc60f7f0d3423bcc4f50747a2ca362"><td class="memItemLeft" align="right" valign="top"><a id="ab0fc60f7f0d3423bcc4f50747a2ca362" name="ab0fc60f7f0d3423bcc4f50747a2ca362"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>demand</b></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Energy Consumer in the Smart Grid This class represents an energy consumer such as households or industries. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aa47328f6fc869ce76333e29d8ebbeed1" name="aa47328f6fc869ce76333e29d8ebbeed1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa47328f6fc869ce76333e29d8ebbeed1">&#9670;&#160;</a></span>EnergyConsumer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EnergyConsumer::EnergyConsumer </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>base_demand</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor for <a class="el" href="class_energy_consumer.html" title="Energy Consumer in the Smart Grid This class represents an energy consumer such as households or indu...">EnergyConsumer</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Unique identifier for the consumer </td></tr>
+    <tr><td class="paramname">type</td><td>Type of consumer ("household" or "industry") </td></tr>
+    <tr><td class="paramname">base_demand</td><td>Base demand of the consumer in kW </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a44d5c502dcf776eef2885d0d5dc168d4" name="a44d5c502dcf776eef2885d0d5dc168d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44d5c502dcf776eef2885d0d5dc168d4">&#9670;&#160;</a></span>isEqual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EnergyConsumer::isEqual </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>consumerId</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the consumer ID matches. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">consumerId</td><td>ID to compare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if IDs match, false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="a4fae44f715451dc1bebbfc8cb0fd6e26" name="a4fae44f715451dc1bebbfc8cb0fd6e26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fae44f715451dc1bebbfc8cb0fd6e26">&#9670;&#160;</a></span>update_demand()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EnergyConsumer::update_demand </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>current_time</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Update demand based on time of day. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">current_time</td><td>Current time in hours (0-24) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="smart__grid_8h_source.html">smart_grid.h</a></li>
 </ul>

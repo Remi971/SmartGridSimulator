@@ -14,30 +14,23 @@ Smart Grid electric system simulator This class simulates a smart grid electric 
 \item 
 \mbox{\hyperlink{class_smart_grid_a3888559a4e75f425843f4cc5a42556ff}{Smart\+Grid}} (double battery\+\_\+capacity, double charge\+\_\+rate, double time\+\_\+step=3600)
 \begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_smart_grid}{Smart\+Grid}. \end{DoxyCompactList}\item 
-\Hypertarget{class_smart_grid_ae0a55d78e67cf77ba428e227e16a0dca}\label{class_smart_grid_ae0a55d78e67cf77ba428e227e16a0dca} 
-void {\bfseries add\+\_\+producer} (\mbox{\hyperlink{class_energy_producer}{Energy\+Producer}} producer)
-\item 
-\Hypertarget{class_smart_grid_ad5ec4142240454695ff8d859e6fa7d68}\label{class_smart_grid_ad5ec4142240454695ff8d859e6fa7d68} 
-void {\bfseries remove\+\_\+producer} (int id)
-\item 
-\Hypertarget{class_smart_grid_ae12833b6baf93d3b4b322771222f77a7}\label{class_smart_grid_ae12833b6baf93d3b4b322771222f77a7} 
-void {\bfseries add\+\_\+consumer} (\mbox{\hyperlink{class_energy_consumer}{Energy\+Consumer}} consumer)
-\item 
-\Hypertarget{class_smart_grid_a25422c2604d24ee0c5265316e405d01c}\label{class_smart_grid_a25422c2604d24ee0c5265316e405d01c} 
-void {\bfseries remove\+\_\+consumer} (int id)
-\item 
-\Hypertarget{class_smart_grid_ad80246c1b2a921b2f8ecfa2bfb1d41cd}\label{class_smart_grid_ad80246c1b2a921b2f8ecfa2bfb1d41cd} 
-void {\bfseries update\+Battery} (double capacity, double charge\+\_\+rate)
-\item 
+void \mbox{\hyperlink{class_smart_grid_ae0a55d78e67cf77ba428e227e16a0dca}{add\+\_\+producer}} (\mbox{\hyperlink{class_energy_producer}{Energy\+Producer}} producer)
+\begin{DoxyCompactList}\small\item\em Add an energy producer to the smart grid. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_smart_grid_ad5ec4142240454695ff8d859e6fa7d68}{remove\+\_\+producer}} (int id)
+\begin{DoxyCompactList}\small\item\em Remove an energy producer from the smart grid. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_smart_grid_ae12833b6baf93d3b4b322771222f77a7}{add\+\_\+consumer}} (\mbox{\hyperlink{class_energy_consumer}{Energy\+Consumer}} consumer)
+\begin{DoxyCompactList}\small\item\em Add an energy consumer to the smart grid. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_smart_grid_a25422c2604d24ee0c5265316e405d01c}{remove\+\_\+consumer}} (int id)
+\begin{DoxyCompactList}\small\item\em Remove an energy consumer from the smart grid. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_smart_grid_ad80246c1b2a921b2f8ecfa2bfb1d41cd}{update\+Battery}} (double capacity, double charge\+\_\+rate)
+\begin{DoxyCompactList}\small\item\em Update battery parameters. \end{DoxyCompactList}\item 
 \Hypertarget{class_smart_grid_a04d52ec9e99cb5cb658c4b94f98da9dd}\label{class_smart_grid_a04d52ec9e99cb5cb658c4b94f98da9dd} 
 void {\bfseries reset} ()
-\item 
-\Hypertarget{class_smart_grid_aa11eb56501f836dd780ca6becd482969}\label{class_smart_grid_aa11eb56501f836dd780ca6becd482969} 
-double {\bfseries update} ()
-\item 
-\Hypertarget{class_smart_grid_a661af59a4f77067bd8b8e46c7a5ea663}\label{class_smart_grid_a661af59a4f77067bd8b8e46c7a5ea663} 
-json {\bfseries get\+\_\+state} () const
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Reset the smart grid to initial state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_smart_grid_a97ab3042a115951be2986fae3a094283}{update}} ()
+\begin{DoxyCompactList}\small\item\em Simulate one time step of the smart grid. \end{DoxyCompactList}\item 
+json \mbox{\hyperlink{class_smart_grid_a661af59a4f77067bd8b8e46c7a5ea663}{get\+\_\+state}} () const
+\begin{DoxyCompactList}\small\item\em Get the current state of the smart grid. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -63,6 +56,114 @@ Constructor for \doxylink{class_smart_grid}{Smart\+Grid}.
 {\em charge\+\_\+rate} & Maximum charge/discharge rate of the battery in kW \\
 \hline
 {\em time\+\_\+step} & Time step for the simulation in seconds (default is 3600s) \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_smart_grid_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_smart_grid_ae12833b6baf93d3b4b322771222f77a7}\index{SmartGrid@{SmartGrid}!add\_consumer@{add\_consumer}}
+\index{add\_consumer@{add\_consumer}!SmartGrid@{SmartGrid}}
+\doxysubsubsection{\texorpdfstring{add\_consumer()}{add\_consumer()}}
+{\footnotesize\ttfamily \label{class_smart_grid_ae12833b6baf93d3b4b322771222f77a7} 
+void Smart\+Grid\+::add\+\_\+consumer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_energy_consumer}{Energy\+Consumer}}}]{consumer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add an energy consumer to the smart grid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em consumer} & \doxylink{class_energy_consumer}{Energy\+Consumer} object to add \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_smart_grid_ae0a55d78e67cf77ba428e227e16a0dca}\index{SmartGrid@{SmartGrid}!add\_producer@{add\_producer}}
+\index{add\_producer@{add\_producer}!SmartGrid@{SmartGrid}}
+\doxysubsubsection{\texorpdfstring{add\_producer()}{add\_producer()}}
+{\footnotesize\ttfamily \label{class_smart_grid_ae0a55d78e67cf77ba428e227e16a0dca} 
+void Smart\+Grid\+::add\+\_\+producer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_energy_producer}{Energy\+Producer}}}]{producer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add an energy producer to the smart grid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em producer} & \doxylink{class_energy_producer}{Energy\+Producer} object to add \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_smart_grid_a661af59a4f77067bd8b8e46c7a5ea663}\index{SmartGrid@{SmartGrid}!get\_state@{get\_state}}
+\index{get\_state@{get\_state}!SmartGrid@{SmartGrid}}
+\doxysubsubsection{\texorpdfstring{get\_state()}{get\_state()}}
+{\footnotesize\ttfamily \label{class_smart_grid_a661af59a4f77067bd8b8e46c7a5ea663} 
+json Smart\+Grid\+::get\+\_\+state (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the current state of the smart grid. 
+
+\begin{DoxyReturn}{Returns}
+JSON object representing the current state of the smart grid 
+\end{DoxyReturn}
+\Hypertarget{class_smart_grid_a25422c2604d24ee0c5265316e405d01c}\index{SmartGrid@{SmartGrid}!remove\_consumer@{remove\_consumer}}
+\index{remove\_consumer@{remove\_consumer}!SmartGrid@{SmartGrid}}
+\doxysubsubsection{\texorpdfstring{remove\_consumer()}{remove\_consumer()}}
+{\footnotesize\ttfamily \label{class_smart_grid_a25422c2604d24ee0c5265316e405d01c} 
+void Smart\+Grid\+::remove\+\_\+consumer (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove an energy consumer from the smart grid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & ID of the consumer to remove \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_smart_grid_ad5ec4142240454695ff8d859e6fa7d68}\index{SmartGrid@{SmartGrid}!remove\_producer@{remove\_producer}}
+\index{remove\_producer@{remove\_producer}!SmartGrid@{SmartGrid}}
+\doxysubsubsection{\texorpdfstring{remove\_producer()}{remove\_producer()}}
+{\footnotesize\ttfamily \label{class_smart_grid_ad5ec4142240454695ff8d859e6fa7d68} 
+void Smart\+Grid\+::remove\+\_\+producer (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove an energy producer from the smart grid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & ID of the producer to remove \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_smart_grid_a97ab3042a115951be2986fae3a094283}\index{SmartGrid@{SmartGrid}!update@{update}}
+\index{update@{update}!SmartGrid@{SmartGrid}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_smart_grid_a97ab3042a115951be2986fae3a094283} 
+void Smart\+Grid\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Simulate one time step of the smart grid. 
+
+\begin{DoxyReturn}{Returns}
+Amount of energy bought from the main grid (k\+Wh) 
+\end{DoxyReturn}
+\Hypertarget{class_smart_grid_ad80246c1b2a921b2f8ecfa2bfb1d41cd}\index{SmartGrid@{SmartGrid}!updateBattery@{updateBattery}}
+\index{updateBattery@{updateBattery}!SmartGrid@{SmartGrid}}
+\doxysubsubsection{\texorpdfstring{updateBattery()}{updateBattery()}}
+{\footnotesize\ttfamily \label{class_smart_grid_ad80246c1b2a921b2f8ecfa2bfb1d41cd} 
+void Smart\+Grid\+::update\+Battery (\begin{DoxyParamCaption}\item[{double}]{capacity}{, }\item[{double}]{charge\+\_\+rate}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update battery parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & New capacity of the battery in k\+Wh \\
+\hline
+{\em charge\+\_\+rate} & New charge/discharge rate of the battery in kW \\
 \hline
 \end{DoxyParams}
 

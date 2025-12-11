@@ -18,7 +18,7 @@ class SetupWidget(QWidget):
         
     def init_ui(self):
         result = QGroupBox("Setup Simulator")
-        welcomeText = QLabel("<h1>Bienvenue dans le simulateur de réseau intelligent!<h1>")
+        welcomeText = QLabel("<h1>Smart Grid Simulator<h1>")
         battery_label = QLabel("Battery Capacity (kWh):")
         battery_label.setAlignment(Qt.AlignmentFlag.AlignLeft)
         self.capacity = QSpinBox()

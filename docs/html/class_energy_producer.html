@@ -91,15 +91,20 @@ $(function(){initNavTree('class_energy_producer.html','','class_energy_producer-
   <div class="headertitle"><div class="title">EnergyProducer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Energy Producer in the Smart Grid This class represents an energy producer such as solar panels, wind turbines, or the main grid.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="smart__grid_8h_source.html">smart_grid.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acee21f6c663f7a6d7dc8a99b3b06deae" id="r_acee21f6c663f7a6d7dc8a99b3b06deae"><td class="memItemLeft" align="right" valign="top"><a id="acee21f6c663f7a6d7dc8a99b3b06deae" name="acee21f6c663f7a6d7dc8a99b3b06deae"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>EnergyProducer</b> (int id, std::string type, double capacity)</td></tr>
-<tr class="memitem:afb7fc2b4982d45da3e4c09671c44e227" id="r_afb7fc2b4982d45da3e4c09671c44e227"><td class="memItemLeft" align="right" valign="top"><a id="afb7fc2b4982d45da3e4c09671c44e227" name="afb7fc2b4982d45da3e4c09671c44e227"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update_output</b> (double current_time)</td></tr>
-<tr class="memitem:ab1cb3881a5b5247f24023b15957a81c8" id="r_ab1cb3881a5b5247f24023b15957a81c8"><td class="memItemLeft" align="right" valign="top"><a id="ab1cb3881a5b5247f24023b15957a81c8" name="ab1cb3881a5b5247f24023b15957a81c8"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isEqual</b> (int producerId)</td></tr>
+<tr class="memitem:acee21f6c663f7a6d7dc8a99b3b06deae" id="r_acee21f6c663f7a6d7dc8a99b3b06deae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acee21f6c663f7a6d7dc8a99b3b06deae">EnergyProducer</a> (int id, std::string type, double capacity)</td></tr>
+<tr class="memdesc:acee21f6c663f7a6d7dc8a99b3b06deae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="class_energy_producer.html" title="Energy Producer in the Smart Grid This class represents an energy producer such as solar panels,...">EnergyProducer</a>.  <br /></td></tr>
+<tr class="memitem:afb7fc2b4982d45da3e4c09671c44e227" id="r_afb7fc2b4982d45da3e4c09671c44e227"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb7fc2b4982d45da3e4c09671c44e227">update_output</a> (double current_time)</td></tr>
+<tr class="memdesc:afb7fc2b4982d45da3e4c09671c44e227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update output based on time of day and randomness.  <br /></td></tr>
+<tr class="memitem:ab1cb3881a5b5247f24023b15957a81c8" id="r_ab1cb3881a5b5247f24023b15957a81c8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1cb3881a5b5247f24023b15957a81c8">isEqual</a> (int producerId)</td></tr>
+<tr class="memdesc:ab1cb3881a5b5247f24023b15957a81c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the producer ID matches.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -112,6 +117,121 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>capacity</b></td></
 <tr class="memitem:ac68bc82c7f2fd926a33a7ecc8b26c451" id="r_ac68bc82c7f2fd926a33a7ecc8b26c451"><td class="memItemLeft" align="right" valign="top"><a id="ac68bc82c7f2fd926a33a7ecc8b26c451" name="ac68bc82c7f2fd926a33a7ecc8b26c451"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>current_output</b></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Energy Producer in the Smart Grid This class represents an energy producer such as solar panels, wind turbines, or the main grid. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="acee21f6c663f7a6d7dc8a99b3b06deae" name="acee21f6c663f7a6d7dc8a99b3b06deae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acee21f6c663f7a6d7dc8a99b3b06deae">&#9670;&#160;</a></span>EnergyProducer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EnergyProducer::EnergyProducer </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor for <a class="el" href="class_energy_producer.html" title="Energy Producer in the Smart Grid This class represents an energy producer such as solar panels,...">EnergyProducer</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Unique identifier for the producer </td></tr>
+    <tr><td class="paramname">type</td><td>Type of producer ("solar", "wind", or "grid") </td></tr>
+    <tr><td class="paramname">capacity</td><td>Maximum capacity of the producer in kW </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="ab1cb3881a5b5247f24023b15957a81c8" name="ab1cb3881a5b5247f24023b15957a81c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1cb3881a5b5247f24023b15957a81c8">&#9670;&#160;</a></span>isEqual()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool EnergyProducer::isEqual </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>producerId</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the producer ID matches. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">producerId</td><td>ID to compare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if IDs match, false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="afb7fc2b4982d45da3e4c09671c44e227" name="afb7fc2b4982d45da3e4c09671c44e227"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb7fc2b4982d45da3e4c09671c44e227">&#9670;&#160;</a></span>update_output()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void EnergyProducer::update_output </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>current_time</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Update output based on time of day and randomness. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">current_time</td><td>Current time in hours (0-24) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="smart__grid_8h_source.html">smart_grid.h</a></li>
 </ul>

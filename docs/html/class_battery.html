@@ -91,19 +91,25 @@ $(function(){initNavTree('class_battery.html','','class_battery-members'); });
   <div class="headertitle"><div class="title">Battery Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="class_battery.html" title="Battery Storage in the Smart Grid This class represents a battery storage system for storing excess e...">Battery</a> Storage in the Smart Grid This class represents a battery storage system for storing excess energy and supplying energy during deficits.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="smart__grid_8h_source.html">smart_grid.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:adfb929b8c7e12bcf92f4038b538a51dc" id="r_adfb929b8c7e12bcf92f4038b538a51dc"><td class="memItemLeft" align="right" valign="top"><a id="adfb929b8c7e12bcf92f4038b538a51dc" name="adfb929b8c7e12bcf92f4038b538a51dc"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Battery</b> (double capacity, double charge_rate)</td></tr>
-<tr class="memitem:a51c3cde9b9e6aa1948a7a6b4548a9ec3" id="r_a51c3cde9b9e6aa1948a7a6b4548a9ec3"><td class="memItemLeft" align="right" valign="top"><a id="a51c3cde9b9e6aa1948a7a6b4548a9ec3" name="a51c3cde9b9e6aa1948a7a6b4548a9ec3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> (double newCapacity, double newCharge_rate)</td></tr>
-<tr class="memitem:a1984c60f05cbbc190e3101ec62eeb51e" id="r_a1984c60f05cbbc190e3101ec62eeb51e"><td class="memItemLeft" align="right" valign="top"><a id="a1984c60f05cbbc190e3101ec62eeb51e" name="a1984c60f05cbbc190e3101ec62eeb51e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>charge</b> (double energy, double delta_time)</td></tr>
+<tr class="memitem:adfb929b8c7e12bcf92f4038b538a51dc" id="r_adfb929b8c7e12bcf92f4038b538a51dc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfb929b8c7e12bcf92f4038b538a51dc">Battery</a> (double capacity, double charge_rate)</td></tr>
+<tr class="memdesc:adfb929b8c7e12bcf92f4038b538a51dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for <a class="el" href="class_battery.html" title="Battery Storage in the Smart Grid This class represents a battery storage system for storing excess e...">Battery</a>.  <br /></td></tr>
+<tr class="memitem:a51c3cde9b9e6aa1948a7a6b4548a9ec3" id="r_a51c3cde9b9e6aa1948a7a6b4548a9ec3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51c3cde9b9e6aa1948a7a6b4548a9ec3">update</a> (double newCapacity, double newCharge_rate)</td></tr>
+<tr class="memdesc:a51c3cde9b9e6aa1948a7a6b4548a9ec3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update battery parameters.  <br /></td></tr>
+<tr class="memitem:a1984c60f05cbbc190e3101ec62eeb51e" id="r_a1984c60f05cbbc190e3101ec62eeb51e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1984c60f05cbbc190e3101ec62eeb51e">charge</a> (double energy, double delta_time)</td></tr>
+<tr class="memdesc:a1984c60f05cbbc190e3101ec62eeb51e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge the battery with excess energy.  <br /></td></tr>
 <tr class="memitem:ac140703fc3c2213c81bb80fdbe57613a" id="r_ac140703fc3c2213c81bb80fdbe57613a"><td class="memItemLeft" align="right" valign="top"><a id="ac140703fc3c2213c81bb80fdbe57613a" name="ac140703fc3c2213c81bb80fdbe57613a"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>reset</b> ()</td></tr>
-<tr class="memitem:a8f47cb436c6f4a04b61f964df1204859" id="r_a8f47cb436c6f4a04b61f964df1204859"><td class="memItemLeft" align="right" valign="top"><a id="a8f47cb436c6f4a04b61f964df1204859" name="a8f47cb436c6f4a04b61f964df1204859"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>discharge</b> (double energy_needed, double delta_time)</td></tr>
+<tr class="memdesc:ac140703fc3c2213c81bb80fdbe57613a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the battery to initial state. <br /></td></tr>
+<tr class="memitem:a8f47cb436c6f4a04b61f964df1204859" id="r_a8f47cb436c6f4a04b61f964df1204859"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f47cb436c6f4a04b61f964df1204859">discharge</a> (double energy_needed, double delta_time)</td></tr>
+<tr class="memdesc:a8f47cb436c6f4a04b61f964df1204859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discharge the battery to supply energy.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -116,6 +122,163 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>max_charge_rate</b>
 <tr class="memitem:aab10abf2b485f02595bedc064bf0c591" id="r_aab10abf2b485f02595bedc064bf0c591"><td class="memItemLeft" align="right" valign="top"><a id="aab10abf2b485f02595bedc064bf0c591" name="aab10abf2b485f02595bedc064bf0c591"></a>
 double&#160;</td><td class="memItemRight" valign="bottom"><b>max_discharge_rate</b></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="class_battery.html" title="Battery Storage in the Smart Grid This class represents a battery storage system for storing excess e...">Battery</a> Storage in the Smart Grid This class represents a battery storage system for storing excess energy and supplying energy during deficits. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="adfb929b8c7e12bcf92f4038b538a51dc" name="adfb929b8c7e12bcf92f4038b538a51dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfb929b8c7e12bcf92f4038b538a51dc">&#9670;&#160;</a></span>Battery()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Battery::Battery </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>capacity</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>charge_rate</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor for <a class="el" href="class_battery.html" title="Battery Storage in the Smart Grid This class represents a battery storage system for storing excess e...">Battery</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">capacity</td><td>Capacity or the battery in kWh </td></tr>
+    <tr><td class="paramname">charge_rate</td><td>Maximum charge/discharge rate of the battery in kW </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a1984c60f05cbbc190e3101ec62eeb51e" name="a1984c60f05cbbc190e3101ec62eeb51e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1984c60f05cbbc190e3101ec62eeb51e">&#9670;&#160;</a></span>charge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Battery::charge </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>energy</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>delta_time</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Charge the battery with excess energy. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">energy</td><td>Amount of energy to charge (kWh) </td></tr>
+    <tr><td class="paramname">delta_time</td><td>Time step for charging (seconds) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8f47cb436c6f4a04b61f964df1204859" name="a8f47cb436c6f4a04b61f964df1204859"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f47cb436c6f4a04b61f964df1204859">&#9670;&#160;</a></span>discharge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Battery::discharge </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>energy_needed</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>delta_time</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Discharge the battery to supply energy. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">energy_needed</td><td>Amount of energy needed (kWh) </td></tr>
+    <tr><td class="paramname">delta_time</td><td>Time step for discharging (seconds) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Amount of energy actually discharged (kWh) </dd></dl>
+
+</div>
+</div>
+<a id="a51c3cde9b9e6aa1948a7a6b4548a9ec3" name="a51c3cde9b9e6aa1948a7a6b4548a9ec3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51c3cde9b9e6aa1948a7a6b4548a9ec3">&#9670;&#160;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Battery::update </td>
+          <td>(</td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>newCapacity</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>newCharge_rate</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Update battery parameters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newCapacity</td><td>New capacity of the battery in kWh </td></tr>
+    <tr><td class="paramname">newCharge_rate</td><td>New charge/discharge rate of the battery in kW </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="smart__grid_8h_source.html">smart_grid.h</a></li>
 </ul>

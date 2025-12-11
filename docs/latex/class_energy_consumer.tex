@@ -1,17 +1,23 @@
 \doxysection{Energy\+Consumer Class Reference}
 \hypertarget{class_energy_consumer}{}\label{class_energy_consumer}\index{EnergyConsumer@{EnergyConsumer}}
+
+
+Energy Consumer in the Smart Grid This class represents an energy consumer such as households or industries.  
+
+
+
+
+{\ttfamily \#include $<$smart\+\_\+grid.\+h$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_energy_consumer_aa47328f6fc869ce76333e29d8ebbeed1}\label{class_energy_consumer_aa47328f6fc869ce76333e29d8ebbeed1} 
-{\bfseries Energy\+Consumer} (int id, std\+::string type, double base\+\_\+demand)
-\item 
-\Hypertarget{class_energy_consumer_a4fae44f715451dc1bebbfc8cb0fd6e26}\label{class_energy_consumer_a4fae44f715451dc1bebbfc8cb0fd6e26} 
-void {\bfseries update\+\_\+demand} (double current\+\_\+time)
-\item 
-\Hypertarget{class_energy_consumer_a44d5c502dcf776eef2885d0d5dc168d4}\label{class_energy_consumer_a44d5c502dcf776eef2885d0d5dc168d4} 
-bool {\bfseries is\+Equal} (int consumer\+Id)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{class_energy_consumer_aa47328f6fc869ce76333e29d8ebbeed1}{Energy\+Consumer}} (int id, std\+::string type, double base\+\_\+demand)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_energy_consumer}{Energy\+Consumer}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_energy_consumer_a4fae44f715451dc1bebbfc8cb0fd6e26}{update\+\_\+demand}} (double current\+\_\+time)
+\begin{DoxyCompactList}\small\item\em Update demand based on time of day. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_energy_consumer_a44d5c502dcf776eef2885d0d5dc168d4}{is\+Equal}} (int consumer\+Id)
+\begin{DoxyCompactList}\small\item\em Check if the consumer ID matches. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -24,6 +30,71 @@ std\+::string {\bfseries type}
 \Hypertarget{class_energy_consumer_ab0fc60f7f0d3423bcc4f50747a2ca362}\label{class_energy_consumer_ab0fc60f7f0d3423bcc4f50747a2ca362} 
 double {\bfseries demand}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Energy Consumer in the Smart Grid This class represents an energy consumer such as households or industries. 
+
+\label{doc-constructors}
+\Hypertarget{class_energy_consumer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_energy_consumer_aa47328f6fc869ce76333e29d8ebbeed1}\index{EnergyConsumer@{EnergyConsumer}!EnergyConsumer@{EnergyConsumer}}
+\index{EnergyConsumer@{EnergyConsumer}!EnergyConsumer@{EnergyConsumer}}
+\doxysubsubsection{\texorpdfstring{EnergyConsumer()}{EnergyConsumer()}}
+{\footnotesize\ttfamily \label{class_energy_consumer_aa47328f6fc869ce76333e29d8ebbeed1} 
+Energy\+Consumer\+::\+Energy\+Consumer (\begin{DoxyParamCaption}\item[{int}]{id}{, }\item[{std\+::string}]{type}{, }\item[{double}]{base\+\_\+demand}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor for \doxylink{class_energy_consumer}{Energy\+Consumer}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Unique identifier for the consumer \\
+\hline
+{\em type} & Type of consumer ("{}household"{} or "{}industry"{}) \\
+\hline
+{\em base\+\_\+demand} & Base demand of the consumer in kW \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_energy_consumer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_energy_consumer_a44d5c502dcf776eef2885d0d5dc168d4}\index{EnergyConsumer@{EnergyConsumer}!isEqual@{isEqual}}
+\index{isEqual@{isEqual}!EnergyConsumer@{EnergyConsumer}}
+\doxysubsubsection{\texorpdfstring{isEqual()}{isEqual()}}
+{\footnotesize\ttfamily \label{class_energy_consumer_a44d5c502dcf776eef2885d0d5dc168d4} 
+bool Energy\+Consumer\+::is\+Equal (\begin{DoxyParamCaption}\item[{int}]{consumer\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if the consumer ID matches. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em consumer\+Id} & ID to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if IDs match, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_energy_consumer_a4fae44f715451dc1bebbfc8cb0fd6e26}\index{EnergyConsumer@{EnergyConsumer}!update\_demand@{update\_demand}}
+\index{update\_demand@{update\_demand}!EnergyConsumer@{EnergyConsumer}}
+\doxysubsubsection{\texorpdfstring{update\_demand()}{update\_demand()}}
+{\footnotesize\ttfamily \label{class_energy_consumer_a4fae44f715451dc1bebbfc8cb0fd6e26} 
+void Energy\+Consumer\+::update\+\_\+demand (\begin{DoxyParamCaption}\item[{double}]{current\+\_\+time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update demand based on time of day. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+\_\+time} & Current time in hours (0-\/24) \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

@@ -1,17 +1,23 @@
 \doxysection{Energy\+Producer Class Reference}
 \hypertarget{class_energy_producer}{}\label{class_energy_producer}\index{EnergyProducer@{EnergyProducer}}
+
+
+Energy Producer in the Smart Grid This class represents an energy producer such as solar panels, wind turbines, or the main grid.  
+
+
+
+
+{\ttfamily \#include $<$smart\+\_\+grid.\+h$>$}
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{class_energy_producer_acee21f6c663f7a6d7dc8a99b3b06deae}\label{class_energy_producer_acee21f6c663f7a6d7dc8a99b3b06deae} 
-{\bfseries Energy\+Producer} (int id, std\+::string type, double capacity)
-\item 
-\Hypertarget{class_energy_producer_afb7fc2b4982d45da3e4c09671c44e227}\label{class_energy_producer_afb7fc2b4982d45da3e4c09671c44e227} 
-void {\bfseries update\+\_\+output} (double current\+\_\+time)
-\item 
-\Hypertarget{class_energy_producer_ab1cb3881a5b5247f24023b15957a81c8}\label{class_energy_producer_ab1cb3881a5b5247f24023b15957a81c8} 
-bool {\bfseries is\+Equal} (int producer\+Id)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{class_energy_producer_acee21f6c663f7a6d7dc8a99b3b06deae}{Energy\+Producer}} (int id, std\+::string type, double capacity)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_energy_producer}{Energy\+Producer}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_energy_producer_afb7fc2b4982d45da3e4c09671c44e227}{update\+\_\+output}} (double current\+\_\+time)
+\begin{DoxyCompactList}\small\item\em Update output based on time of day and randomness. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_energy_producer_ab1cb3881a5b5247f24023b15957a81c8}{is\+Equal}} (int producer\+Id)
+\begin{DoxyCompactList}\small\item\em Check if the producer ID matches. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,6 +33,71 @@ double {\bfseries capacity}
 \Hypertarget{class_energy_producer_ac68bc82c7f2fd926a33a7ecc8b26c451}\label{class_energy_producer_ac68bc82c7f2fd926a33a7ecc8b26c451} 
 double {\bfseries current\+\_\+output}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Energy Producer in the Smart Grid This class represents an energy producer such as solar panels, wind turbines, or the main grid. 
+
+\label{doc-constructors}
+\Hypertarget{class_energy_producer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_energy_producer_acee21f6c663f7a6d7dc8a99b3b06deae}\index{EnergyProducer@{EnergyProducer}!EnergyProducer@{EnergyProducer}}
+\index{EnergyProducer@{EnergyProducer}!EnergyProducer@{EnergyProducer}}
+\doxysubsubsection{\texorpdfstring{EnergyProducer()}{EnergyProducer()}}
+{\footnotesize\ttfamily \label{class_energy_producer_acee21f6c663f7a6d7dc8a99b3b06deae} 
+Energy\+Producer\+::\+Energy\+Producer (\begin{DoxyParamCaption}\item[{int}]{id}{, }\item[{std\+::string}]{type}{, }\item[{double}]{capacity}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor for \doxylink{class_energy_producer}{Energy\+Producer}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Unique identifier for the producer \\
+\hline
+{\em type} & Type of producer ("{}solar"{}, "{}wind"{}, or "{}grid"{}) \\
+\hline
+{\em capacity} & Maximum capacity of the producer in kW \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_energy_producer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_energy_producer_ab1cb3881a5b5247f24023b15957a81c8}\index{EnergyProducer@{EnergyProducer}!isEqual@{isEqual}}
+\index{isEqual@{isEqual}!EnergyProducer@{EnergyProducer}}
+\doxysubsubsection{\texorpdfstring{isEqual()}{isEqual()}}
+{\footnotesize\ttfamily \label{class_energy_producer_ab1cb3881a5b5247f24023b15957a81c8} 
+bool Energy\+Producer\+::is\+Equal (\begin{DoxyParamCaption}\item[{int}]{producer\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if the producer ID matches. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em producer\+Id} & ID to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if IDs match, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{class_energy_producer_afb7fc2b4982d45da3e4c09671c44e227}\index{EnergyProducer@{EnergyProducer}!update\_output@{update\_output}}
+\index{update\_output@{update\_output}!EnergyProducer@{EnergyProducer}}
+\doxysubsubsection{\texorpdfstring{update\_output()}{update\_output()}}
+{\footnotesize\ttfamily \label{class_energy_producer_afb7fc2b4982d45da3e4c09671c44e227} 
+void Energy\+Producer\+::update\+\_\+output (\begin{DoxyParamCaption}\item[{double}]{current\+\_\+time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Update output based on time of day and randomness. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+\_\+time} & Current time in hours (0-\/24) \\
+\hline
+\end{DoxyParams}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

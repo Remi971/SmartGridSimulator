@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['prerequistes_0',['Prerequistes',['../md__r_e_a_d_m_e.html#autotoc_md4',1,'']]],
-  ['python_1',['3. Launch the GUI (Python)',['../md__r_e_a_d_m_e.html#autotoc_md8',1,'']]]
+  ['mit_20license_0',['MIT License',['../md__l_i_c_e_n_s_e.html',1,'']]]
 ];
