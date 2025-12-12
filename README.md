@@ -41,8 +41,9 @@ make
 
 ```bash
 cd python
-pip -m venv .venv
-pip -m install -r requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate # Activate the environnement
+pip -m install -r ../requirements.txt
 python python/app.py
 ```
 
