@@ -1,13 +1,13 @@
 # Smart Grid Simulator
 
-A smart electric grid simulator developped in C++ with a PyQt GUI.
+A smart electric grid simulator developed in C++ with a PyQt GUI.
 
 ## Functionalities
 
 - Energy Producers/Consumers Simulation
 - Dynamique managements of the batteries
 - GUI in PyQt
-- Modularity and extensibility (A vérifier)
+- Modularity and scalability
 
 *TODO:* Mettre une image
 
