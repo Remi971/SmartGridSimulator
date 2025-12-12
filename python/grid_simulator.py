@@ -7,8 +7,10 @@ class JsonString(ctypes.Structure):
     _fields_ = [("data", ctypes.c_char_p)] 
 
 # Charger la librairie C++
-print("path file : ", Path(__file__).parent.parent)
-lib = ctypes.CDLL(Path(__file__).parent.parent / "build/libsmart_grid.dylib")
+lib_file = Path(__file__).parent.parent / "build"
+lib_files = lib_file.rglob("libsmart_grid.*")
+filename = str(lib_files.__next__())
+lib = ctypes.CDLL(filename)
 
 # Définir les types de retour et arguments
 lib.create_grid.argtypes = [ctypes.c_double, ctypes.c_double]
