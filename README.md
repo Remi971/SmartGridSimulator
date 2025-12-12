@@ -1,6 +1,6 @@
 # Smart Grid Simulator
 
-A smart electric grid simulator developed in C++ with a PyQt GUI.
+A smart electric grid simulator developped in C++ with a PyQt GUI.
 
 ## Functionalities
 
