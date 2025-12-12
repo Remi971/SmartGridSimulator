@@ -15,6 +15,8 @@ A smart electric grid simulator developed in C++ with a PyQt GUI.
 
 ### Prerequistes
 
+Application tested on mac and linux
+
 - C++17 or higher
 - CMake ≥ 3.10
 - Python 3.8+ (for the PyQt GUI)
