@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import (QWidget, QHBoxLayout, QVBoxLayout, QFrame, QTabWidget, QGroupBox, QLabel, QGridLayout, QSpinBox, QCheckBox, QPushButton                      )
+from PySide6.QtWidgets import (QWidget, QHBoxLayout, QVBoxLayout, QFrame, QGroupBox, QLabel, QSpinBox, QCheckBox, QPushButton                      )
 from PySide6.QtGui import (QCursor, QPixmap)
 from PySide6.QtCore import Qt
 import os

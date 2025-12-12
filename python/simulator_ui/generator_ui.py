@@ -30,10 +30,10 @@ class GeneratorUI:
 
     def generate_data(self):
         """
-        Génère des données simulées pour 24 heures :
-        - Consommation (ménages + industries)
-        - Production solaire (basée sur l'heure de la journée)
-        - Production éolienne (variations aléatoires réalistes)
+        Generate simulated data for 24 hours :
+        - Consumption (household + industries)
+        - Solar production (based on the hour of the day) 
+        - Wind production (realistic random variations) 
         """
         hours = list(range(24))
         data = []

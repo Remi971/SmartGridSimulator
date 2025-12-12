@@ -46,6 +46,10 @@ pip -m install -r requirements.txt
 python python/app.py
 ```
 
+## Documentation
+
+You can find details of the C++ code by opening the documentation page in your browser : [documentation](docs/html/index.html)
+
 ## Example
 
 Use case of the application.
