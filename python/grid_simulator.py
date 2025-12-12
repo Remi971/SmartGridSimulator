@@ -1,14 +1,14 @@
 # python/grid_simulator.py
 import ctypes
 import json
-import os
-
+from pathlib import Path
 # Définir la structure JsonString
 class JsonString(ctypes.Structure):
     _fields_ = [("data", ctypes.c_char_p)] 
 
 # Charger la librairie C++
-lib = ctypes.CDLL(os.path.join(os.path.dirname(__file__),"..", "build", "libsmart_grid.dylib"))
+print("path file : ", Path(__file__).parent.parent)
+lib = ctypes.CDLL(Path(__file__).parent.parent / "build/libsmart_grid.dylib")
 
 # Définir les types de retour et arguments
 lib.create_grid.argtypes = [ctypes.c_double, ctypes.c_double]
